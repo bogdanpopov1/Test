@@ -1,0 +1,56 @@
+﻿<Window x:Class="Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="700" Width="1130" Background="#FFE5EDFF">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160*" />
+            <ColumnDefinition Width="113*" />
+            <ColumnDefinition Width="102*" />
+            <ColumnDefinition Width="125*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="47*"  />
+            <RowDefinition Height="60*" />
+            <RowDefinition Height="50*"  />
+            <RowDefinition Height="50*"  />
+            <RowDefinition Height="50*"  />
+            <RowDefinition Height="200*"  />
+        </Grid.RowDefinitions>
+
+        <Label Content="Расчет комиссионных" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Grid.Column="1" Height="42" Width="270" />
+
+        <TextBlock Grid.Row="1" Text="Введите фамилию продавца" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="21" Width="208" />
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="Surname_TB" Background="{x:Null}" Width="200" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" TextChanged="Surname_TB_TextChanged" FontSize="16" />
+
+        <TextBlock Grid.Row="2" Text="Введите дату приема на работу" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="22" Width="232" />
+        <DatePicker Grid.Row="2" Grid.Column="1" x:Name="Date_DP" Background="{x:Null}" Width="200" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" />
+
+        <TextBlock Grid.Row="3" Text="Введите среднюю дневную выручку" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Height="21" Width="268" />
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="Revenue_TB" Background="{x:Null}" Width="200" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" />
+
+        <GridSplitter Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="5" Background="#FF424242" Height="240" Grid.RowSpan="5" Margin="0,0,0,75"/>
+
+        <TextBlock Text="Комисионные продавца" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Padding="0,0,0,30" Height="57" Width="224" />
+        <TextBox x:Name="SurnameResult_TB" Text="фамилия продавца" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,0,10" Background="{x:Null}" Width="200" Height="30" TextAlignment="Center" FontStyle="Italic" Padding="0,2,0,0" IsEnabled="False" />
+
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="ИТОГО" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Height="26" Width="67" Margin="0,0,10,0" />
+        <TextBox x:Name="Result_TB" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="150" Height="30" Margin="-1,0,0,0" IsEnabled="False"  />
+
+        <Button x:Name="Calculate_Btn" Content="РАССЧИТАТЬ" Grid.ColumnSpan="4" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="40" Background="#FF5F51FF" BorderBrush="#FF2B34A7" Foreground="White" FontWeight="Bold" FontSize="20" FontFamily="Rockwell" Cursor="Hand" Click="Calculate_Btn_Click" />
+
+        <DataGrid x:Name="Sellers" Grid.Row="5" Grid.ColumnSpan="4" FontSize="16" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО продавца" Binding="{Binding Person.FullName}" Width="250" />
+                <DataGridTextColumn Header="Размер комиссионного вознаграждения, руб." Binding="{Binding Commission}" Width="350" />
+                <DataGridTextColumn Header="Размер дневной выручки, руб." Binding="{Binding Revenue}" Width="250" />
+                <DataGridTextColumn Header="Стаж работы в организации, лет." Binding="{Binding Experience}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
